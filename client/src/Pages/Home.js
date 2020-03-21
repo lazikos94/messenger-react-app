@@ -1,23 +1,44 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+//import connects
+import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+//
+
 
 
 class Home extends Component {
 
     render() { 
-        const { auth } = this.props;
+        const { auth, userlist } = this.props;
         if (!auth.uid)  return ( <Redirect to='/' /> )
        
-        return ( <div><h1>here will be Home</h1></div> );
+        return ( <div>
+
+              {userlist && userlist.map(ul=> {
+                    return( <div ul={userlist} key={ul.id} >
+                   <NavLink to={'/Home/' + ul.id} ><h1>{ul.userName}</h1> </NavLink>
+                      </div>)
+                })} 
+
+        </div> );
     }
 }
 
 const mapStateToProps = (state) =>{
-    console.log(state)
     return {
-      auth: state.firebase.auth
+      auth: state.firebase.auth,
+      userlist: state.firestore.ordered.userInfo
     }
   }
  
-export default connect(mapStateToProps)(Home);
+
+  
+  export default compose(
+    connect(mapStateToProps),
+    firestoreConnect( [
+      {collection: 'userInfo'}
+    ] )
+  )(Home);
