@@ -13,6 +13,7 @@ class CreateChatRoom extends Component {
   state = {}
 
    componentDidMount(){
+     console.log(this.props.location.state.userinfo.ul);
     this.setState({
       userId: this.props.userId
     })
@@ -61,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
 
  
 const mapStateToProps = (state, myprops) =>{
-  const id = myprops.match.params.id
+  const id = myprops.location.state.userinfo.ul.id;
   const users = state.firestore.data.userInfo;
   const user = users? users[id] : null;
   const mychatroom = state.firestore.ordered.ChatRooms;

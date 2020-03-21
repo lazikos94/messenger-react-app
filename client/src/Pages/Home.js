@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import connects
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -18,9 +18,15 @@ class Home extends Component {
         return ( <div>
 
               {userlist && userlist.map(ul=> {
-                    return( <div ul={userlist} key={ul.id} >
-                   <NavLink to={'/Home/' + ul.id} ><h1>{ul.userName}</h1> </NavLink>
-                      </div>)
+                    return( 
+                    <div ul={userlist} key={ul.id} >
+                      <Link to={{
+                        pathname:`/Home/${ul.id}`,
+                        state:{
+                          userinfo:{ul}
+                        }
+                      }}><h1>{ul.userName}</h1> </Link>
+                    </div>)
                 })} 
 
         </div> );
