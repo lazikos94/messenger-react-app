@@ -10,10 +10,12 @@ import { CreateChatRoomAction } from '../Store/Actions/ChatRoomAction'
 import { Button } from '@material-ui/core';
 
 class CreateChatRoom extends Component {
-  state = {}
+  state = {
+    userId:''
+  }
 
    componentDidMount(){
-     console.log(this.props.location.state.userinfo.ul);
+
     this.setState({
       userId: this.props.userId
     })
@@ -22,11 +24,13 @@ class CreateChatRoom extends Component {
   handleSubmit =(e) => {
     e.preventDefault();
     this.props.CreateChatRoomAction(this.state)
-
+    console.log(this.state);
+    //this.props.history.push(`/Home/Chat/${to id ebales esi sto room}`)
 }
 
     render() { 
-     const { user, mychatroom, auth } = this.props;
+     const { user, mychatroom, auth,newchatroom } = this.props;
+     
      if (!auth.uid)  return ( <Redirect to='/' /> )
 
         return ( <div>
@@ -44,6 +48,7 @@ class CreateChatRoom extends Component {
                 
                 {mychatroom && mychatroom.map(mychatroom=> {
                   if(auth.uid == mychatroom.authorId || auth.uid == mychatroom.userId)
+                    console.log(mychatroom.id)
                     return( <div mychatroom={mychatroom} key={mychatroom.id} >
                    <NavLink to={'/Home/Chat/' + mychatroom.id} ><h1>{mychatroom.authorUserName}</h1> </NavLink>
                       </div>)
@@ -70,7 +75,8 @@ const mapStateToProps = (state, myprops) =>{
     auth: state.firebase.auth,
     user: user,
     userId: id,
-    mychatroom: mychatroom
+    mychatroom: mychatroom,
+    newchatroom:state.chatRoom.newchatroom
   }
 }
 

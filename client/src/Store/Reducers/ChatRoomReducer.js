@@ -1,11 +1,13 @@
 
 
-export const ChatRoomReducer = (state={}, action) => {
+export const ChatRoomReducer = (state={newchatroom:''}, action) => {
     switch (action.type) {
         case 'CREATE_CHATROOM':
-            alert('chatroom created')
             console.log('chatroom created', action.newChatroom)
-            return state;
+            return {
+                ...state,
+                newchatroom:action.newChatroom
+            };
         case 'CREATE_CHATROOM_ERROR':
             console.log('fail', action)
             return state;
