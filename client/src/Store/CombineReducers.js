@@ -7,11 +7,15 @@ import { firestoreReducer } from 'redux-firestore';
 import { Config } from '../Firebase/Config';
 
 import { authReducer } from './Reducers/AuthReducer';
+import { ChatRoomReducer } from './Reducers/ChatRoomReducer';
+import { ChatReducer } from './Reducers/ChatReducer';
 
 const conbineReducer = combineReducers({
     firebase: firebaseReducer,
     firestore: firestoreReducer,
-    auth: authReducer
+    auth: authReducer,
+    chatRoom: ChatRoomReducer,
+    chat: ChatReducer
     
 })
 
