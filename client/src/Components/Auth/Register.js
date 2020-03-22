@@ -6,7 +6,7 @@ import Input from '@material-ui/core/Input';
 import Form from '@material-ui/core/FormGroup';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
-
+import FileBase64 from 'react-file-base64';
 
 
 
@@ -14,7 +14,8 @@ class Register extends Component {
     state = { 
         userName: '',
         email: '',
-        password: ''
+        password: '',
+        files:null
      }
 
      handleChange = (e) => {
@@ -26,9 +27,11 @@ class Register extends Component {
      handleSubmit =(e) => {
          e.preventDefault();
          console.log(this.state);
-         this.props.signUp(this.state)
+        this.props.signUp(this.state)
      }
-
+    getFiles(files){
+        this.setState({ files: files.base64 })
+      }
     render() { 
         return (  <div>
         <Form  onSubmit={this.handleSubmit}
@@ -54,6 +57,10 @@ class Register extends Component {
                 size='small'
                 onChange={this.handleChange}
             />
+             <hr style={{width: '50%', marginLeft:'20%'}} />
+             <FileBase64
+                multiple={ false }
+                onDone={ this.getFiles.bind(this) } />
             <hr style={{width: '50%', marginLeft:'20%'}} />
             <Input 
                 style={{  width:'33%', backgroundColor: '#69f0ae', marginLeft: '30%',  borderRadius:'5px'}}

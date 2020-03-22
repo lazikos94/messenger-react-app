@@ -5,14 +5,14 @@ import LogOut from '../Auth/LogOut';
 import Grid from '@material-ui/core/Grid';
 
 class NavBarButton extends Component {
-
     render() {
         const {profile} = this.props; 
 
         return ( <div  > 
             <Grid container style={{ width: '69%', marginLeft: '20%',height: '46px'}}>
                 <Grid item style={{height: '100%', width: '33%', marginLeft: '10%'}}>
-                        <h3 style={{color: 'white', fontSize: '20px',marginLeft: '10%', marginTop: '10px'}}>{profile.userName}</h3>
+                <img style={{width:'30px',height:'30px'}} src={profile.image}/>
+                <h3 style={{color: 'white', fontSize: '20px',marginLeft: '10%', marginTop: '10px'}}>{profile.userName}</h3>
                 </Grid>
                     
 

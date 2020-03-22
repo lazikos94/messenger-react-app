@@ -26,8 +26,7 @@ export const authReducer = (state=initialstateAuth, action) => {
                 ...state,
             } 
         case 'SIGNUP_ERROR':
-            alert('failll')
-            console.log('signup failed XAXA');
+            console.log('signup failed',action.err.message);
             return {
                 ...state,
             }  
