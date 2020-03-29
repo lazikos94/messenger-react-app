@@ -19,10 +19,12 @@ class Chat extends Component {
 
     render() { 
      const { message, chatroomId } = this.props;
-
+        console.log(message)
         return ( <div>
 
-                {message && message.map(message=> {
+                {message && message.slice().sort((a,b)=>{
+                  return a.createdAt.seconds - b.createdAt.seconds
+                }).map(message=> {
                     if (message.chatroomId == chatroomId )
                     return( <div message={message} key={message.id}  >
                     <div style={{backgroundColor: '#0277bd', color: 'white', marginLeft: '4%', borderRadius: '25px'}}>
