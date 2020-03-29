@@ -12,7 +12,6 @@ const conbineReducer = combineReducers({
     firebase: firebaseReducer,
     firestore: firestoreReducer,
     auth: authReducer
-    
 })
 
 const store = createStore(
