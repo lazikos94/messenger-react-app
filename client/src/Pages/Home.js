@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import CreateChatRoom from '../Components/Messenger/createChatRoom'
 //
 
 
@@ -19,7 +20,15 @@ class Home extends Component {
 
               {userlist && userlist.map(ul=> {
                     return( <div ul={userlist} key={ul.id} >
-                   <NavLink to={'/Home/' + ul.id} ><h1>{ul.userName}</h1> </NavLink>
+                      <img style={{width: '69px', height: '69px', borderRadius: '100%'}} src={ul.profileImage} alt=''></img>
+                   <NavLink style={{color: 'white'}} to={'/Home/' + ul.id} >
+                     <h3>{ul.email}</h3><h1>{ul.userName}</h1> </NavLink>
+                     
+                     <CreateChatRoom user={ul} />
+                    
+                     <hr style={{color: 'white'}} />
+                     <hr style={{color: 'white'}} />
+                     
                       </div>)
                 })} 
 

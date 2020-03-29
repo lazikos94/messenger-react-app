@@ -5,6 +5,7 @@ export const CreateChatAction = (message) => {
         const authorId = getState().firebase.auth.uid;
         firestore.collection('Chats').add({
             ...message,
+            authorProfileImage: profile.profileImage,
            authorUserName: profile.userName,
            authorId: authorId,
            createdAt: new Date()

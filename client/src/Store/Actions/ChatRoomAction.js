@@ -5,6 +5,7 @@ export const CreateChatRoomAction = (newChatroom) => {
         const authorId = getState().firebase.auth.uid;
         firestore.collection('ChatRooms').add({
             ...newChatroom,
+           authorProfileImage: profile.profileImage,
            authorUserName: profile.userName,
            authorId: authorId,
            createdAt: new Date()

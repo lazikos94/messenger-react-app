@@ -3,9 +3,9 @@ import './index.css'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Start from "./Pages/Start";
 import Home from './Pages/Home';
-import CreateChatRoom from './Components/CreateChatRoom';
 import NavBar from './Components/NavBar/NavBar';
-import Chat from './Components/Chat';
+import Chatrooms from './Components/Messenger/ChatRooms';
+import UserDetails from './Pages/UserDetails';
 
 
 
@@ -19,8 +19,9 @@ class App extends Component {
       <Switch>
         <Route exact path='/' component={Start}/>
         <Route exact path='/Home' component={Home}/>
-        <Route exact path='/Home/:id' component={CreateChatRoom}/>
-        <Route path='/Home/Chat/:id' component={Chat}/>
+        <Route exact path='/Home/:id' component={UserDetails}/>
+
+        <Route path='/Home/Messenger/ChatRooms' component={Chatrooms}/>
       </Switch>
     </BrowserRouter> 
     </div>
