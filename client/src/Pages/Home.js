@@ -15,7 +15,7 @@ class Home extends Component {
     render() { 
         const { auth, userlist } = this.props;
         if (!auth.uid)  return ( <Redirect to='/' /> )
-       
+       console.log(userlist)
         return ( <div>
 
               {userlist && userlist.map(ul=> {

@@ -14,8 +14,9 @@ class CreateChatRoom extends Component {
 
 
     componentDidMount(){
+        const id = this.props.user.id ? this.props.user.id :this.props.id
         this.setState({
-        userId: this.props.user.id,
+        userId:id,
         userProfileImage: this.props.user.profileImage,
         userUserName: this.props.user.userName,
         })
@@ -39,6 +40,7 @@ CchatRoom = () => {
 
     render() { 
      const { user } = this.props;
+     console.log(this.state);
      const gochatroom = this.CchatRoom() ? ( 
         <NavLink to='/Home/Messenger/ChatRooms/'> <Button style={{backgroundColor: 'yellow'}}>SendMessege</Button> </NavLink>
      ):

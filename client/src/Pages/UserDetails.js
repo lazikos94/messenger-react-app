@@ -14,6 +14,7 @@ class UsersDetails extends Component {
      render(){
 
     const { user, id } = this.props;
+    console.log(user);
     if(user)
         return(
           <div>
@@ -25,7 +26,7 @@ class UsersDetails extends Component {
                <hr style={{width: '69%', marginLeft: '16%'}} />
                <h3 style={{textAlign:'center', color:'white', marginTop:'5%'}}>{user.userName}</h3>
             < hr style ={{width: '92%', marginLeft: '4%'}} />    
-                   <CreateChatRoom user={user} />   
+                   <CreateChatRoom user={user} id={id} />   
            </div>
       </div>
         )
@@ -37,7 +38,8 @@ class UsersDetails extends Component {
         const mapStateToProps = (state, ownprops) =>{ 
           const id = ownprops.match.params.id
           const users = state.firestore.data.userInfo
-          const user = users? users[id] : null;
+          const user = users ? users[id] : null;
+          console.log(users);
           //const user = state.firestore.data.userInfo.find(user=> lalala)
           console.log(users)
           return {
